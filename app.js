@@ -43,7 +43,7 @@ function Data () {
   
   this.dump = function () {
     console.log(assignments);
-  }
+  };
   
   this.getAssignment = function (assignmentNumber) {
     return assignments[assignmentNumber];
@@ -72,16 +72,28 @@ QuickGrade.controller('assignmentController', function ($scope, data) {
   $scope.dump = function () {
     data.dump();
   };
-
-  $scope.getCurrentAnswer = function () {
+  
+  $scope.enterGrade = function (grade) {
+    var curr = currentAnswersToGrade[currentAnswer];
+    
+    if (_.isArray(curr.grades)) {
+      curr.grades.push(grade);
+    } else {
+      curr.grades = [grade];
+    }
+    
+    currentAnswer++;
+  };
+  
+  $scope.getCurrentSubmission = function () {
     return currentAnswersToGrade[currentAnswer].answer || "No Answer Provided";
   };
   
-  $scope.getCurrentAnswerNumber = function () {
+  $scope.getCurrentSubmissionNumber = function () {
     return currentAnswer;
-  }
+  };
 
-  $scope.getPreviousAnswer = function () {
+  $scope.getPreviousSubmission = function () {
     if (currentAnswer > 0) {
       return currentAnswersToGrade[currentAnswer - 1].answer || "No Answer Provided";      
     } else {
@@ -89,22 +101,27 @@ QuickGrade.controller('assignmentController', function ($scope, data) {
     }
   };
   
-  $scope.getNumberOfSubmissions = function () {
-    return currentAnswersToGrade.length
+  $scope.getPreviousSubmissionGrade = function () {
+    if (currentAnswer > 0) {
+      // most recently entered grade for this question
+      return _.last(currentAnswersToGrade[currentAnswer - 1].grades);
+    }
   };
   
-  $scope.nextAnswer = function () {
+  $scope.getNumberOfSubmissions = function () {
+    return currentAnswersToGrade.length;
+  };
+  
+  $scope.nextSubmission = function () {
     currentAnswersToGrade[currentAnswer].grade = 7;
     currentAnswer = currentAnswer + 1;
   };
-  
-  $scope.assignGrade = function () {}
   
   $scope.nextRound = function () {
     currentAnswer = 0;
   };
   
-  $scope.onLastAnswer = function () {
-    return currentAnswer === $scope.getNumberOfSubmissions() - 1;
+  $scope.roundComplete = function () {
+    return currentAnswer >= $scope.getNumberOfSubmissions();
   };
 });
