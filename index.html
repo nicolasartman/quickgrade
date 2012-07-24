@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html ng-app="quickGrade">
+  <head>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <script src="angular-1.0.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="underscore.js" type="text/javascript" charset="utf-8"></script>
+    <script src="app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Quick! Grade!</title>
+  </head>
+  <body>
+    <div class="box" id="grading-view" ng-controller="assignmentController">
+      <div class="box" id="previous">
+        <div class="document" id="current-answer">
+          {{getPreviousAnswer()}}
+        </div>        
+      </div>
+      <div class="box" id="current">
+        <div class="document" id="current-answer">
+          {{getCurrentAnswer()}}
+        </div>
+        <div id="progress">
+          {{getCurrentAnswerNumber() + 1}}/{{getNumberOfSubmissions()}}
+        </div>
+        <div id="next-button">
+          <button ng-click="nextAnswer()" ng-hide="onLastAnswer()">Next Answer</button>
+          <button ng-click="nextRound()" ng-show="onLastAnswer()">Next Round</button>
+        </div>
+        <button ng-click="dump()">Dump Data</button>
+      </div>
+    </div>
+  </body>
+</html>
