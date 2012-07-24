@@ -1,4 +1,4 @@
-/*global 
+/*global
  jquery:true,
  _: true,
  $:true,
@@ -22,7 +22,7 @@ function Data () {
           }
         ]
       },
-      {        
+      {
         "studentName": "Bobby Tables",
         "answers": [
           {
@@ -30,7 +30,7 @@ function Data () {
           }
         ]
       },
-      {        
+      {
         "studentName": "Jimbo",
         "answers": [
           {
@@ -40,21 +40,21 @@ function Data () {
       }
     ]
   }];
-  
+
   this.dump = function () {
     console.log(assignments);
   };
-  
+
   this.getAssignment = function (assignmentNumber) {
     return assignments[assignmentNumber];
   };
-  
+
   this.getAnswersForQuestion = function (assignmentNumber, questionNumber) {
     return _.map(assignments[assignmentNumber].submissions, function (submission, index) {
       return submission.answers[questionNumber];
     });
   };
-  
+
   // TODO: make a submit answer function instead of mutating
 }
 
@@ -66,61 +66,61 @@ QuickGrade.controller('assignmentController', function ($scope, data) {
   var currentAssignment = 0;
   var currentAnswer = 0;
   var currentQuestion = 0;
-  
+
   var currentAnswersToGrade = _.shuffle(data.getAnswersForQuestion(currentAssignment, currentQuestion));
-    
+
   $scope.dump = function () {
     data.dump();
   };
-  
+
   $scope.enterGrade = function (grade) {
     var curr = currentAnswersToGrade[currentAnswer];
-    
+
     if (_.isArray(curr.grades)) {
       curr.grades.push(grade);
     } else {
       curr.grades = [grade];
     }
-    
+
     currentAnswer++;
   };
-  
+
   $scope.getCurrentSubmission = function () {
-    return currentAnswersToGrade[currentAnswer].answer || "No Answer Provided";
+    return currentAnswersToGrade[currentAnswer].answer || "";
   };
-  
+
   $scope.getCurrentSubmissionNumber = function () {
     return currentAnswer;
   };
 
   $scope.getPreviousSubmission = function () {
     if (currentAnswer > 0) {
-      return currentAnswersToGrade[currentAnswer - 1].answer || "No Answer Provided";      
+      return currentAnswersToGrade[currentAnswer - 1].answer;
     } else {
-      return "No Previous Answer";
+      return "";
     }
   };
-  
+
   $scope.getPreviousSubmissionGrade = function () {
     if (currentAnswer > 0) {
       // most recently entered grade for this question
       return _.last(currentAnswersToGrade[currentAnswer - 1].grades);
     }
   };
-  
+
   $scope.getNumberOfSubmissions = function () {
     return currentAnswersToGrade.length;
   };
-  
+
   $scope.nextSubmission = function () {
     currentAnswersToGrade[currentAnswer].grade = 7;
     currentAnswer = currentAnswer + 1;
   };
-  
+
   $scope.nextRound = function () {
     currentAnswer = 0;
   };
-  
+
   $scope.roundComplete = function () {
     return currentAnswer >= $scope.getNumberOfSubmissions();
   };
