@@ -7,25 +7,58 @@ body {
   
 }
 
-#current {
+#current, #previous {
   position: absolute;
   background: #C4DEFF;
+}
+
+#current {
+  width: 600px;
+  height: 400px;
   top: 50%;
   left: 50%;
   margin-left: -300px;
   margin-top: -200px;
-  width: 600px;
-  height: 400px;
+  -moz-box-shadow:    0 0 20px #444; /* FF3.5+ */
+  -webkit-box-shadow: 0 0 20px #444; /* Saf3+, Chrome */
+  box-shadow:         0 0 20px #444; /* Standard. Opera 10.5, IE9 */
 }
 
-#current-answer {
+#previous {
+  -moz-box-shadow:    0 0 30px #999; /* FF3.5+ */
+  -webkit-box-shadow: 0 0 30px #999; /* Saf3+, Chrome */
+  box-shadow:         0 0 30px #999; /* Standard. Opera 10.5, IE9 */
+  width: 450px;
+  height: 300px;
+  top: 10%;
+}
+
+#previous-answer-grade {
+  color: #EEE;
+  
+  -moz-border-radius: 99px; /* FF1+ */
+  -webkit-border-radius: 99px; /* Saf3+, Chrome */
+  -khtml-border-radius: 99px; /* Konqueror */
+  border-radius: 99px; /* Standard. IE9 */
+
+  background-color: rgba(0,0,0, 0.5);
+  font-size: 2em;
+  width: 2em;
+  left: 50%;
+  margin-left: -1em;
+  text-align: center;
+  position: absolute;
+  bottom: 10%;
+}
+
+#current-answer, #previous-answer {
   padding: 10px 16px;
   font: 1.4em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
   border: 1px solid #999;
-  width: 506px; /* 600 - 30*2 margin - 32*2 padding - 1*2 border */
-  margin: 0 30px;
+  width: 80%; /* 600 - 30*2 margin - 32*2 padding - 1*2 border */
+  margin: 0 10%;
   margin-top: 1px; /* temp hack */
-  height: 300px;
+  height: 75%;
 }
 
 #previous {
