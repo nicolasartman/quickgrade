@@ -9,12 +9,10 @@
   </head>
   <body>
     <div class="box" id="grading-view" ng-controller="assignmentController">
-      <div class="box" id="previous" ng-show="getPreviousSubmission()">
-        <div class="doc" id="previous-answer">
-          {{getPreviousSubmission()}}
-          <div class="grade" ng-show="getPreviousSubmissionGrade()" id="previous-answer-grade">
-            {{getPreviousSubmissionGrade()}}
-          </div>
+      <div class="doc" id="previous" ng-show="getPreviousSubmission()">
+        {{getPreviousSubmission()}}
+        <div class="grade" ng-show="getPreviousSubmissionGrade()" id="previous-answer-grade">
+          {{getPreviousSubmissionGrade()}}
         </div>
       </div>
       <div class="box" id="current">
@@ -29,7 +27,7 @@
             {{getCurrentSubmissionNumber() + 1}}/{{getNumberOfSubmissions()}}
           </div>
           <div id="grades">
-            <button ng-repeat="grade in [1,2,3,4,5]" ng-click="enterGrade(grade)" ng-hide="roundComplete()">{{grade}}</button>
+            <button class="grade" ng-repeat="grade in [1,2,3,4,5]" ng-click="enterGrade(grade)" ng-hide="roundComplete()">{{grade}}</button>
             <button ng-click="nextRound()" ng-show="roundComplete()">Next Round</button>
           </div>
           <button ng-click="dump()">Dump Data</button>

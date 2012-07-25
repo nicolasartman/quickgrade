@@ -1,5 +1,5 @@
 body {
-  background: #DDD url('theme/wooden desk/wood_texture.jpg') repeat fixed 0 0;
+  background: #DDD url('theme/wooden desk/wood_texture.png') repeat fixed 0 0;
   padding: 0;
   margin: 0;
 }
@@ -78,6 +78,8 @@ body {
   height: 440px;
   top: 5%;
   left: 5%;
+  padding: 3px 4px;
+  font: 0.7em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 }
 
 #previous-answer-grade {
@@ -93,14 +95,9 @@ body {
   width: 2em;
   margin-left: -1em;
   text-align: center;
-  position: absolute;
+    position: absolute;
   top: 5%;
   right: 5%;
-}
-
-#previous {
-  padding: 3px 4px;
-  font: 0.7em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 }
 
 #controls {
@@ -117,26 +114,39 @@ body {
   margin: auto auto;
 }
 
-#grades button {
-  background: rgb(238,238,238);
+#grades button.grade {
+/*  background: rgb(238,238,238);
   background: -moz-linear-gradient(top,     rgba(220,220,220,1) 0%, rgba(180,180,180,1) 100%);
   background: -webkit-linear-gradient(top,  rgba(220,220,220,1) 0%, rgba(180,180,180,1) 100%);
   background: -o-linear-gradient(top,       rgba(220,220,220,1) 0%, rgba(180,180,180,1) 100%);
   background: -ms-linear-gradient(top,      rgba(220,220,220,1) 0%, rgba(180,180,180,1) 100%);
   background: linear-gradient(to bottom,    rgba(220,220,220,1) 0%, rgba(180,180,180,1) 100%);
-
-/*  -moz-border-radius: 99px;
+*/
+  background: none;
+  
+  -moz-border-radius: 99px;
   -webkit-border-radius: 99px;
   border-radius: 99px;
   -webkit-background-clip: padding-box;
-*/
-  border-color: #DDD;
+
+  border:none;
 
 /*  color: #DDD;*/
-  font-size: 1.7em;
+  font-size: 1.4em;
+  font-family: cursive;
   text-align: center;
-  width: 1.4em;
+  width: 2em;
+  height: 2em;
+  font-weight: bold;
   margin: auto 0.2em;
+}
+
+#grades button.grade:hover {
+  border: 2px solid #999;
+}
+#grades button.grade:active {
+  background: rgba(0,0,0,0.2);
+  border: 2px solid #999;
 }
 
 #progress {
