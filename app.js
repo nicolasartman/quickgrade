@@ -13,6 +13,11 @@ var QuickGrade = angular.module('quickGrade', []);
 function Data () {
   var assignments = [{
     "assignmentName": "Lab 1",
+    "questions": [
+      {
+        "question": "How much?!"
+      }
+    ],
     "submissions": [
       {
         "studentName": "A Student",
@@ -44,6 +49,10 @@ function Data () {
   this.dump = function () {
     console.log(assignments);
   };
+  
+  this.getQuestion = function (assignmentNumber, questionNumber) {
+    return assignments[assignmentNumber].questions[questionNumber].question;
+  }
 
   this.getAssignment = function (assignmentNumber) {
     return assignments[assignmentNumber];
@@ -65,9 +74,9 @@ QuickGrade.factory('data', function () {
 QuickGrade.controller('assignmentController', function ($scope, data) {
   var currentAssignment = 0;
   var currentAnswer = 0;
-  var currentQuestion = 0;
+  var currentQuestionNumber = 0;
 
-  var currentAnswersToGrade = _.shuffle(data.getAnswersForQuestion(currentAssignment, currentQuestion));
+  var currentAnswersToGrade = _.shuffle(data.getAnswersForQuestion(currentAssignment, currentQuestionNumber));
 
   $scope.dump = function () {
     data.dump();
@@ -84,6 +93,10 @@ QuickGrade.controller('assignmentController', function ($scope, data) {
 
     currentAnswer++;
   };
+  
+  $scope.getCurrentQuestion = function () {
+    return data.getQuestion(currentAssignment, currentQuestionNumber);
+  }
 
   $scope.getCurrentSubmission = function () {
     return currentAnswersToGrade[currentAnswer].answer || "";

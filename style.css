@@ -14,23 +14,52 @@ body {
 }
 
 #current {
-  width: 450px;
-  height: 600px;
+  width: 595px;
+  height: 770px;
   top: 50%;
   left: 50%;
-  margin-left: -225px;
-  margin-top: -300px;
-  -moz-box-shadow:    0 0 20px #444; /* FF3.5+ */
-  -webkit-box-shadow: 0 0 20px #444; /* Saf3+, Chrome */
-  box-shadow:         0 0 20px #444; /* Standard. Opera 10.5, IE9 */
+  margin-top: -385px;
+  margin-left: -297px;
+  -webkit-box-shadow: 0 0 20px #444; 
+  -moz-box-shadow:    0 0 20px #444; 
+  box-shadow:    0 0 20px #444; 
+  overflow: hidden;
+  
 }
+
+#current-submission-answer {
+  padding: 2% 4%;
+  font: 1.4em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  border: 1px solid #999;
+  margin: 0 10%;
+  margin-top: 5%;
+  height: 60%;
+  position: relative;
+}
+
+/* Folded page effect - temporarily disabled as it conflicts with the box shadow */
+/*#current:before {
+  content:"";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-width: 0px 32px 32px 0;
+  border-style: solid;
+  border-color: #DDD transparent;
+  background: #DDD url('theme/wooden desk/wood_texture.jpg') repeat fixed 0 0;  
+  
+  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.3), -1px 2px 2px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0    2px 2px rgba(0,0,0,0.3), -1px 2px 2px rgba(0,0,0,0.2);
+  box-shadow: 0         2px 2px rgba(0,0,0,0.3), -1px 2px 2px rgba(0,0,0,0.2);
+}
+*/
 
 #previous {
   -moz-box-shadow:    0 0 30px #999; /* FF3.5+ */
   -webkit-box-shadow: 0 0 30px #999; /* Saf3+, Chrome */
   box-shadow:         0 0 30px #999; /* Standard. Opera 10.5, IE9 */
-  width: 300px;
-  height: 400px;
+  width: 340px;
+  height: 440px;
   top: 5%;
   left: 5%;
 }
@@ -53,19 +82,18 @@ body {
   right: 5%;
 }
 
-#current-answer, #previous-answer {
-  padding: 10px 16px;
-  font: 1.4em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-/*  border: 1px solid #999;*/
-  width: 80%; /* 600 - 30*2 margin - 32*2 padding - 1*2 border */
-  margin: 0 10%;
-  margin-top: 1px; /* temp hack */
-  height: 75%;
-}
-
 #previous {
   padding: 3px 4px;
   font: 0.7em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;  
+}
+
+#controls {
+/*  border: 1px solid red;*/
+  position: absolute;
+  overflow: hidden;
+  bottom: 0;
+  height: 10%;
+  width: 100%;
 }
 
 #next-button {
@@ -81,8 +109,7 @@ body {
 
 #progress {
   position: absolute;
-  bottom: 0px;
-  right: 10px;
-  height: 10%;
+  bottom: 2%;
+  right: 1%;
   font: 1.5em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 }
