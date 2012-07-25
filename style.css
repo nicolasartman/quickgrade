@@ -1,11 +1,11 @@
 body {
-  background: #DDD url('theme/wooden desk/wood_texture.jpg') repeat fixed 0 0;  
+  background: #DDD url('theme/wooden desk/wood_texture.jpg') repeat fixed 0 0;
   padding: 0;
   margin: 0;
 }
 
-.box {
-  
+.doc {
+  overflow: auto;
 }
 
 #current, #previous {
@@ -13,28 +13,44 @@ body {
   background: #F7F7F7;
 }
 
+
+/* TODO: gradient!!! */
 #current {
+  background: rgb(238,238,238);
+  background: -moz-linear-gradient(top,     rgba(240,240,240,1) 0%, rgba(230,230,230,1) 20%, rgba(250,250,250,1) 100%);
+  background: -webkit-linear-gradient(top,  rgba(240,240,240,1) 0%, rgba(230,230,230,1) 20%, rgba(250,250,250,1) 100%);
+  background: linear-gradient(to bottom,    rgba(240,240,240,1) 0%, rgba(230,230,230,1) 20%, rgba(250,250,250,1) 100%);
+
   width: 595px;
   height: 770px;
   top: 50%;
   left: 50%;
   margin-top: -385px;
   margin-left: -297px;
-  -webkit-box-shadow: 0 0 20px #444; 
-  -moz-box-shadow:    0 0 20px #444; 
-  box-shadow:    0 0 20px #444; 
+  -webkit-box-shadow: 0 0 20px #444;
+  -moz-box-shadow:    0 0 20px #444;
+  box-shadow:         0 0 20px #444;
   overflow: hidden;
-  
+}
+
+#current-submission-answer, #question {
+  padding: 2% 4%;
+  font: 1.4em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+/*  border: 1px solid #999;*/
+  margin: 0 10%;
+  margin-top: 5%;
+  position: relative;
 }
 
 #current-submission-answer {
-  padding: 2% 4%;
-  font: 1.4em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-  border: 1px solid #999;
-  margin: 0 10%;
-  margin-top: 5%;
   height: 60%;
-  position: relative;
+}
+
+#question {
+  overflow: auto;
+  font-weight: bold;
+  max-height: 15%;
+/*  height: 15%;*/
 }
 
 /* Folded page effect - temporarily disabled as it conflicts with the box shadow */
@@ -46,8 +62,8 @@ body {
   border-width: 0px 32px 32px 0;
   border-style: solid;
   border-color: #DDD transparent;
-  background: #DDD url('theme/wooden desk/wood_texture.jpg') repeat fixed 0 0;  
-  
+  background: #DDD url('theme/wooden desk/wood_texture.jpg') repeat fixed 0 0;
+
   -webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.3), -1px 2px 2px rgba(0,0,0,0.2);
   -moz-box-shadow: 0    2px 2px rgba(0,0,0,0.3), -1px 2px 2px rgba(0,0,0,0.2);
   box-shadow: 0         2px 2px rgba(0,0,0,0.3), -1px 2px 2px rgba(0,0,0,0.2);
@@ -66,7 +82,7 @@ body {
 
 #previous-answer-grade {
   color: #EEE;
-  
+
   -moz-border-radius: 99px; /* FF1+ */
   -webkit-border-radius: 99px; /* Saf3+, Chrome */
   -khtml-border-radius: 99px; /* Konqueror */
@@ -84,7 +100,7 @@ body {
 
 #previous {
   padding: 3px 4px;
-  font: 0.7em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;  
+  font: 0.7em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 }
 
 #controls {
@@ -96,15 +112,31 @@ body {
   width: 100%;
 }
 
-#next-button {
+#grades {
   text-align: center;
   margin: auto auto;
 }
 
-#next-button button {
+#grades button {
+  background: rgb(238,238,238);
+  background: -moz-linear-gradient(top,     rgba(220,220,220,1) 0%, rgba(180,180,180,1) 100%);
+  background: -webkit-linear-gradient(top,  rgba(220,220,220,1) 0%, rgba(180,180,180,1) 100%);
+  background: -o-linear-gradient(top,       rgba(220,220,220,1) 0%, rgba(180,180,180,1) 100%);
+  background: -ms-linear-gradient(top,      rgba(220,220,220,1) 0%, rgba(180,180,180,1) 100%);
+  background: linear-gradient(to bottom,    rgba(220,220,220,1) 0%, rgba(180,180,180,1) 100%);
+
+/*  -moz-border-radius: 99px;
+  -webkit-border-radius: 99px;
+  border-radius: 99px;
+  -webkit-background-clip: padding-box;
+*/
+  border-color: #DDD;
+
+/*  color: #DDD;*/
   font-size: 1.7em;
   text-align: center;
-  margin: auto auto;
+  width: 1.4em;
+  margin: auto 0.2em;
 }
 
 #progress {
