@@ -8,18 +8,21 @@
     <title>Quick! Grade!</title>
   </head>
   <body>
-    <div class="box" id="grading-view" ng-controller="assignmentController">
+    <div id="menu">
+      <div id="logo">QuickGrade!</div>
+    </div>
+    <div id="grading-view" ng-controller="assignmentController">
       <div class="doc" id="previous" ng-show="getPreviousSubmission()">
         {{getPreviousSubmission()}}
         <div class="grade" ng-show="getPreviousSubmissionGrade()" id="previous-answer-grade">
           {{getPreviousSubmissionGrade()}}
         </div>
       </div>
-      <div class="box" id="current">
-        <div class="doc" id="question">
+      <div class="doc" id="current">
+        <div id="question">
           {{getCurrentSubmissionNumber() + 1}}. {{getCurrentQuestion()}}
         </div>
-        <div class="doc" id="current-submission-answer">
+        <div id="current-submission-answer">
           {{getCurrentSubmission()}}
         </div>
         <div id="controls">

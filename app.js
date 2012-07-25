@@ -15,7 +15,7 @@ function Data () {
     "assignmentName": "Lab 1",
     "questions": [
       {
-        "question": "I am a very very very very very very very very long question",
+        "question": "I am a two line question that spans not only one line, but in fact two!"
       },
       {
         "question": "How much?!"
@@ -55,7 +55,7 @@ function Data () {
   
   this.getQuestion = function (assignmentNumber, questionNumber) {
     return assignments[assignmentNumber].questions[questionNumber].question;
-  }
+  };
 
   this.getAssignment = function (assignmentNumber) {
     return assignments[assignmentNumber];
@@ -99,7 +99,7 @@ QuickGrade.controller('assignmentController', function ($scope, data) {
   
   $scope.getCurrentQuestion = function () {
     return data.getQuestion(currentAssignment, currentQuestionNumber);
-  }
+  };
 
   $scope.getCurrentSubmission = function () {
     return currentAnswersToGrade[currentAnswer].answer || "";
