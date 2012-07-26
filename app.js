@@ -70,11 +70,39 @@ function Data () {
   // TODO: make a submit answer function instead of mutating
 }
 
+QuickGrade.factory('settings', function () {
+  return (function () {
+    var self = {};
+  
+    self.menuItems = [
+      {
+        "name": "Settings",
+        "children": [
+          // {
+          //   "name": "Something"
+          // }
+        ]
+      },
+      {
+        "name": "Help",
+      }
+    ];
+    
+    return self;
+  }());
+});
+
 QuickGrade.factory('data', function () {
   return new Data();
 });
 
-QuickGrade.controller('assignmentController', function ($scope, data) {
+
+QuickGrade.controller('menuBarController', function ($scope, settings) {
+  $scope.settings = settings;
+});
+
+
+QuickGrade.controller('assignmentController', function ($scope, data, settings) {
   var currentAssignment = 0;
   var currentAnswer = 0;
   var currentQuestionNumber = 0;

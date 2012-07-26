@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html ng-app="quickGrade">
   <head>
+    <link href='http://fonts.googleapis.com/css?family=Patrick+Hand' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="style.css" type="text/css" media="screen" title="no title" charset="utf-8">
     <script src="lib/angular-1.0.1.js" type="text/javascript" charset="utf-8"></script>
     <script src="lib/underscore.js" type="text/javascript" charset="utf-8"></script>
@@ -8,8 +9,17 @@
     <title>Quick! Grade!</title>
   </head>
   <body>
-    <div id="menu">
+    <div id="menu" ng-controller="menuBarController">
       <div id="logo">QuickGrade!</div>
+      <div id="nav">
+        <ul>
+          <li class="menu-item" ng-repeat="item in settings.menuItems">{{item.name}}
+            <ul class="sub-menu">
+              <li class="sub-menu-item" ng-repeat="child in item.children">{{child.name}}</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
     <div id="grading-view" ng-controller="assignmentController">
       <div class="doc" id="previous" ng-show="getPreviousSubmission()">

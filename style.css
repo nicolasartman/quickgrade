@@ -5,9 +5,9 @@ body {
 }
 
 #menu {
-  z-index: 10;
-  height: 50px;
   position: absolute;
+  z-index: 10;
+  height: 1.5em;
   width: 100%;
   top: 0;
   background: #A1B3D1;
@@ -20,17 +20,64 @@ body {
   background: linear-gradient(to bottom,  rgba(153,205,220,1) 0%,rgba(133,185,211,1) 100%);
   
   -webkit-box-shadow: 0px 5px 5px 0 #777;
+
+  font-family: 'Patrick Hand', 'Over the Rainbow', cursive;
+  font-size: 2em;
 }
 
-#logo {
-  
-  position: absolute;
-  top: 50%;
-  height: 1.4em;
-  margin-top: -1.4em;
-  font-family: cursive;
-  font-size: 1.4em;
+#logo, #nav {
+/*  height: 2em;*/
 }
+#logo {
+  position: absolute;
+  padding-top:    0.2em;
+  padding-bottom: 0.3em;
+  padding-left:   0.7em;
+  padding-right:  1em;
+}
+#nav {
+  float: right;
+  height: 1.5em;
+  border: 1px solid red;
+}
+
+#nav ul {
+  height: 1.5em;
+  padding: 0;
+  margin: 0;
+}
+.menu-item {
+  display: block;
+  float: left;
+  list-style: none;
+/*  border: 1px solid green;*/
+  height: 1.0em;
+  padding-top:    0.2em;
+  padding-bottom: 0.3em;
+  padding-left:   0.7em;
+  padding-right:  0.7em;
+}
+.menu-item:hover {
+  background-color: rgba(0,0,0, 0.2);
+}
+.menu-item .sub-menu {
+  padding: 0.4em 1em;
+  list-style: none;
+  display: none;
+}
+.menu-item:hover .sub-menu {
+  background: rgba(0,0,0,0.1);
+  position: absolute;
+  display: block;
+}
+.menu-item:hover .sub-menu-item {
+  float: none;
+  padding: 0.25em 0 0.25em 0;
+} 
+.sub-menu-item:hover {
+  background-color: rgba(0,0,0,0.4);
+}
+
 
 .doc {
   overflow: auto;
@@ -151,13 +198,14 @@ body {
   border:none;
 
 /*  color: #DDD;*/
-  font-size: 1.4em;
-  font-family: cursive;
+  font-size: 1.3em;
+  font-family: 'Patrick Hand', 'Over the Rainbow', cursive;
   text-align: center;
   width: 2em;
   height: 2em;
   font-weight: bold;
   margin: auto 0.2em;
+  border: 2px solid transparent;
 }
 #grades button.grade:hover {
   border: 2px solid #999;
