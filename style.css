@@ -2,7 +2,16 @@ body {
   background: #DDD url('theme/wooden desk/wood_texture.jpg') repeat fixed 0 0;
   padding: 0;
   margin: 0;
+  font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
 }
+
+#menu, .grade, #previous-submission-grade {
+  font-family: 'Permanent Marker', cursive;
+}
+
+/* ========================== */
+/* = Menu Bar / Site Header = */
+/* ========================== */
 
 #menu {
   position: absolute;
@@ -10,7 +19,6 @@ body {
   height: 1.5em;
   width: 100%;
   top: 0;
-/*  background: #A1B3D1;*/
   background: rgb(153,205,220);
   background: -moz-linear-gradient(top,  rgba(153,205,220,1) 0%, rgba(133,185,211,1) 100%);
   background: -webkit-linear-gradient(top,  rgba(153,205,220,1) 0%,rgba(133,185,211,1) 100%);
@@ -18,16 +26,15 @@ body {
   
   -webkit-box-shadow: 0px 5px 5px 0 #777;
 
-  font-family: 'Patrick Hand', 'Over the Rainbow', cursive;
   font-size: 2em;
 }
 
 #logo {
   position: absolute;
-  padding-top:    0.2em;
+  padding-top:    0.em;
   padding-bottom: 0.3em;
   padding-left:   0.7em;
-  padding-right:  1em;
+  padding-right:  0.7em;
 }
 #nav {
   float: right;
@@ -40,12 +47,13 @@ body {
   margin: 0;
 }
 .menu-item {
+/*  border: 1px solid #f00;*/
   display: block;
   float: left;
   list-style: none;
   height: 1.0em;
-  padding-top:    0.2em;
-  padding-bottom: 0.3em;
+  padding-top:    0em;
+  padding-bottom: 0.5em;
   padding-left:   0.7em;
   padding-right:  0.7em;
 }
@@ -152,7 +160,6 @@ body {
 
 /*  color: #DDD;*/
   font-size: 1.3em;
-  font-family: 'Patrick Hand', 'Over the Rainbow', cursive;
   text-align: center;
   width: 2em;
   height: 2em;
@@ -174,7 +181,6 @@ body {
   height: 1.5em;
   margin-top: -0.75em;
   right: 5%;
-  font: 1.5em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 }
 
 #previous-submission {
@@ -203,7 +209,7 @@ body {
   color: red;
   font-size: 1.7em;
   text-align: center;
-  font-family: 'Patrick Hand', cursive;
 
   background-color: none;
 }
+
