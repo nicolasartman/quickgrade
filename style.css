@@ -5,7 +5,7 @@ body {
   font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
 }
 
-#menu, .grade, #previous-submission-grade {
+#menu, .grade, #previous-submission-grade, #next-round-button {
   font-family: 'Permanent Marker', cursive;
 }
 
@@ -130,7 +130,6 @@ body {
 #current-submission-response, #current-submission .question {
   font-size: 1.4em;
 }
-
 #current-submission-response {
   height: 60%;
 }
@@ -175,6 +174,19 @@ body {
   border: 2px solid #999;
 }
 
+#next-round-button {
+  margin: auto 0.2em;
+  font-size: 2em;
+  background: none;
+  border: none;
+}
+#next-round-button:hover {
+  color: red;
+}
+#next-round-button:active {
+  color: #B00000;
+}
+
 #progress {
   position: absolute;
   top: 50%;
@@ -199,6 +211,11 @@ body {
 
 #previous-submission-response, #previous-submission .question {
   font-size: 0.8em;
+}
+
+#previous-submission-response {
+  height: 70%;
+  overflow: hidden;
 }
 
 #previous-submission-grade {
