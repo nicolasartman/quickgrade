@@ -99,6 +99,10 @@ QuickGrade.factory('data', function () {
 
 QuickGrade.controller('menuBarController', function ($scope, settings) {
   $scope.settings = settings;
+  
+  $scope.alert = function (message) {
+    window.alert(message);
+  }
 });
 
 
