@@ -1,4 +1,5 @@
 /*global
+ window: true,
  jquery:true,
  _: true,
  $:true,
@@ -84,7 +85,7 @@ QuickGrade.factory('settings', function () {
         ]
       },
       {
-        "name": "Help",
+        "name": "Help"
       }
     ];
     
@@ -102,7 +103,7 @@ QuickGrade.controller('menuBarController', function ($scope, settings) {
   
   $scope.alert = function (message) {
     window.alert(message);
-  }
+  };
 });
 
 

@@ -22,17 +22,22 @@
       </div>
     </div>
     <div id="grading-view" ng-controller="assignmentController">
-      <div class="doc" id="previous" ng-show="getPreviousSubmission()">
-        {{getPreviousSubmission()}}
-        <div class="grade" ng-show="getPreviousSubmissionGrade()" id="previous-answer-grade">
+      <div class="doc" id="previous-submission" ng-show="getPreviousSubmission()">
+        <div class="question">
+          {{getCurrentSubmissionNumber() + 1}}. {{getCurrentQuestion()}}
+        </div>
+        <div id="previous-submission-response">
+          {{getPreviousSubmission()}}
+        </div>
+        <div class="grade" ng-show="getPreviousSubmissionGrade()" id="previous-submission-grade">
           {{getPreviousSubmissionGrade()}}
         </div>
       </div>
-      <div class="doc" id="current">
-        <div id="question">
+      <div class="doc" id="current-submission">
+        <div class="question">
           {{getCurrentSubmissionNumber() + 1}}. {{getCurrentQuestion()}}
         </div>
-        <div id="current-submission-answer">
+        <div id="current-submission-response">
           {{getCurrentSubmission()}}
         </div>
         <div id="controls">
