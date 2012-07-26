@@ -23,7 +23,7 @@ body {
   background: -moz-linear-gradient(top,  rgba(153,205,220,1) 0%, rgba(133,185,211,1) 100%);
   background: -webkit-linear-gradient(top,  rgba(153,205,220,1) 0%,rgba(133,185,211,1) 100%);
   background: linear-gradient(to bottom,  rgba(153,205,220,1) 0%,rgba(133,185,211,1) 100%);
-  
+
   -webkit-box-shadow: 0px 5px 5px 0 #777;
 
   font-size: 2em;
@@ -58,10 +58,10 @@ body {
   padding-right:  0.7em;
 }
 .menu-item:hover {
-  background-color: rgba(0,0,0, 0.2);
+  background-color: rgba(0,0,0, 0.1);
 }
 .menu-item:active {
-  background-color: rgba(0,0,0, 0.3);
+  background-color: rgba(0,0,0, 0.2);
 }
 .menu-item .sub-menu {
   cursor: pointer;
@@ -77,7 +77,7 @@ body {
 .menu-item:hover .sub-menu-item {
   float: none;
   padding: 0.25em 0 0.25em 0;
-} 
+}
 .sub-menu-item:hover {
   background-color: rgba(0,0,0,0.4);
 }
@@ -149,7 +149,7 @@ body {
 
 #grades button.grade {
   background: none;
-  
+
   -moz-border-radius: 99px;
   -webkit-border-radius: 99px;
   border-radius: 99px;
@@ -166,26 +166,22 @@ body {
   margin: auto 0.2em;
   border: 2px solid transparent;
 }
-#grades button.grade:hover {
-  border: 2px solid #999;
-}
-#grades button.grade:active {
-  background: rgba(0,0,0,0.2);
-  border: 2px solid #999;
-}
-
 #next-round-button {
   margin: auto 0.2em;
   font-size: 2em;
   background: none;
   border: none;
 }
-#next-round-button:hover {
+#grades button:hover {
   color: red;
+  /*border: 2px solid #999;*/
 }
-#next-round-button:active {
+#grades button:active {
   color: #B00000;
+/*  background: rgba(0,0,0,0.2);*/
+/*  border: 2px solid #999;*/
 }
+
 
 #progress {
   position: absolute;
@@ -193,6 +189,7 @@ body {
   height: 1.5em;
   margin-top: -0.75em;
   right: 5%;
+  font-size: 1.4em;
 }
 
 #previous-submission {
@@ -205,7 +202,7 @@ body {
   -moz-box-shadow:    0 0 30px #999;
   -webkit-box-shadow: 0 0 30px #999;
   box-shadow:         0 0 30px #999;
-  
+
   overflow: hidden;
 }
 
