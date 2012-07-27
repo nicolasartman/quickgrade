@@ -98,15 +98,27 @@ QuickGrade.factory('data', function () {
 });
 
 
-QuickGrade.controller('menuBarController', function ($scope, settings) {
+QuickGrade.controller('menuBarController', function ($scope, data, settings) {
   $scope.settings = settings;
   
   $scope.alert = function (message) {
     window.alert(message);
   };
+
+  window.URL = window.webkitURL || window.URL;
+  window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
+
+  var builder = new window.BlobBuilder();
+  builder.append(JSON.stringify(data.getAssignment(0)));
+  console.log(window.URL.createObjectURL);
+  console.log(builder.getBlob('text/plain'))
+  console.log(window.URL.createObjectURL(builder.getBlob('text/plain')));
+  
+  $scope.dataBlobURL = window.URL.createObjectURL(builder.getBlob('text/plain')) === null;
 });
 
 
+// TODO: migrate state to service
 QuickGrade.controller('assignmentController', function ($scope, data, settings) {
   var currentAssignment = 0;
   var currentAnswer = 0;
