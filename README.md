@@ -15,8 +15,6 @@ Speed
 -----
 - No the need for physical organization and distribution of submissions. Takes up 0 desk space and no room in your office!
 - Instant export to csv for integrating into your existing digital gradebook (future: configurable export format)
-- Instantly view metrics on assignments and the course overall
-- Highlight key words or phrases in your choice of colors, to quickly pinpoint problem (and success) areas.
 
 Fairness
 --------
@@ -25,3 +23,10 @@ Fairness
   - Enhanced horizontal grading through multiple "rounds" of randomly ordered answers each question; averages are then calculated to ensure fluke scores are easily avoided.
 
 Also: no server communication — everything is on your local computer so you can easily keep confidential data stafe and stay FERPA compliant.
+
+Additional Planned Features
+---------------------------
+
+- Mixed grading: have some questions automatically graded, while others are manually reviewed
+- Automatically highlight key words or phrases in your choice of colors, to quickly pinpoint problem (and success) areas.
+- Metrics on assignments and the course overall
