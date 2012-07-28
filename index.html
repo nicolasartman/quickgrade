@@ -14,7 +14,7 @@
       <div id="logo">QuickGrade!</div>
       <div id="nav">
         <ul>
-          <li class="menu-item"><a download="data.json" href="{{dataBlobURL}}">Download</a></li>
+          <li class="menu-item"><a download="data.csv" href="{{dataBlobURL}}">Download</a></li>
           <li class="menu-item" ng-click="alert('clicked')" ng-repeat="item in settings.menuItems">{{item.name}}
             <ul class="sub-menu">
               <li class="sub-menu-item" ng-repeat="child in item.children">{{child.name}}</li>
