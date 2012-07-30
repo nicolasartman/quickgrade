@@ -110,11 +110,9 @@ QuickGrade.controller('menuBarController', function ($scope, data, settings) {
   window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
 
   var builder = new window.BlobBuilder();
-  // builder.append(JSON.stringify(data.getAssignment(0)));
-  builder.append("cheese");
-  console.log(builder.getBlob('text/plain'));
-  console.log(window.URL.createObjectURL(builder.getBlob('text/plain')) === undefined);
+  builder.append(JSON.stringify(data.getAssignment(0), null, 2));
 
+  // TODO: revoke url when this changes -- use a $watch perhaps
   $scope.dataBlobURL = window.URL.createObjectURL(builder.getBlob('text/plain'));
 });
 
