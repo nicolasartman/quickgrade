@@ -8,6 +8,8 @@ Overview
 
 Quick Grade aims to make grading short lab-style assignments faster and with less chance of bias. The main techniques used to accomplish this are a mix of established tactics for ensuring fairness and new strategies for accelerating the grading workflow. It is designed to read in a google-forms formatted csv file, though more formats for assignment submission will be supported in the future.
 
+Though it can be used for any type of lab submissions, quick grade was originally conceived to enable an alternative lab assignment process in which students may submit labs multiple times, but must keep resubmitting until they demonstrate mastery of each topic. More on this strategy will be added to this doc soon.
+
 Key Features (most of these are 'coming-soon')
 ============
 
@@ -30,3 +32,9 @@ Additional Planned Features
 - Mixed grading: have some questions automatically graded, while others are manually reviewed
 - Automatically highlight key words or phrases in your choice of colors, to quickly pinpoint problem (and success) areas.
 - Metrics on assignments and the course overall
+
+
+Effectiveness Testing and Metrics
+=================================
+
+The initial trial (consisting of a version of quick grade hacked together to work for a single assignment) of this was very successful for the grader; students reported highly favorable qualitative responses to the format and turnaround time. However, once this more polished version is done, data will be gathered by professors and students to ascertain and enhance its effectiveness.
