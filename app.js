@@ -40,7 +40,7 @@ QuickGrade.factory('settings', function () {
   return (function () {
     var self = {};
     
-    self.showPaperStack = true;
+    self.showPaperStack = false;
     
     self.boolToVisibilityVerb = function (bool) {
       console.log("blarp");
