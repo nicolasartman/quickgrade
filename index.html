@@ -10,6 +10,8 @@
     <title>Quick! Grade!</title>
   </head>
   <body>
+    
+    <!-- Menu -->
     <div id="menu" ng-controller="menuBarController">
       <div id="logo">QuickGrade!</div>
       <div id="nav">
@@ -24,6 +26,9 @@
               <li class="sub-menu-item" ng-click="settings.showPaperStack = !settings.showPaperStack">
                 {{settings.boolToVisibilityVerb(!settings.showPaperStack)}} Paper Stack
               </li>
+              <li class="sub-menu-item" ng-click="settings.showJustGradedStack = !settings.showJustGradedStack">
+                {{settings.boolToVisibilityVerb(!settings.showJustGradedStack)}} Just Graded Stack
+              </li>
             </ul>
           </li>
           <li class="menu-item" ng-click="alert('clicked')" ng-repeat="item in settings.menuItems">{{item.name}}
@@ -34,8 +39,10 @@
         </ul>
       </div>
     </div>
+    
+    <!-- Main Grading View -->
     <div id="grading-view" ng-controller="assignmentController">
-      <div class="doc" id="previous-submission" ng-show="getPreviousSubmission()">
+      <div class="doc" id="previous-submission" ng-show="getPreviousSubmission() && settings.showJustGradedStack">
         <div class="question">
           {{getCurrentSubmissionNumber() + 1}}. {{getCurrentQuestion()}}
         </div>
