@@ -5,7 +5,7 @@ body {
   font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
 }
 
-#menu, .grade, #previous-submission-grade, #next-round-button {
+#menu, .grade, #previous-submission-grade, #next-round-button, #proposed-grade {
   font-family: 'Permanent Marker', cursive;
 }
 
@@ -156,6 +156,24 @@ body {
   box-shadow:         0 0 20px #444;
   overflow: hidden;
   z-index: 4;
+}
+
+#current-submission #proposed-grade {
+  position: absolute;
+  top: 0.7em;
+  right: 0.7em;
+  border: 3px solid red;
+  border-radius: 4em;
+  color: red;
+  line-height: 2em;
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  font-size: 2em;
+  -moz-transform: rotate(10deg); /* FF3.5+ */
+  -webkit-transform: rotate(10deg); /* Saf3.1+, Chrome */
+  -o-transform: rotate(10deg); /* Opera 10.5 */
+  transform: rotate(10deg);
 }
 
 .question {

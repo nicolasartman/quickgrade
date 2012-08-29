@@ -95,6 +95,11 @@ QuickGrade.controller('assignmentController', function ($scope, data, settings) 
   $scope.dump = function () {
     data.dump();
   };
+  
+  $scope.setProposedGrade = null;
+  $scope.setProposedGrade = function (grade) {
+    $scope.proposedGrade = grade;
+  }
 
   $scope.enterGrade = function (grade) {
     var curr = currentAnswersToGrade[currentAnswer];

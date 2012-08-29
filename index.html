@@ -42,6 +42,8 @@
     
     <!-- Main Grading View -->
     <div id="grading-view" ng-controller="assignmentController">
+      <!-- Just-Graded Submission -->
+      <!-- TODO: refactor name -->
       <div class="doc" id="previous-submission" ng-show="getPreviousSubmission() && settings.showJustGradedStack">
         <div class="question">
           {{getCurrentSubmissionNumber() + 1}}. {{getCurrentQuestion()}}
@@ -53,7 +55,12 @@
           {{getPreviousSubmissionGrade()}}
         </div>
       </div>
+      <!-- Current Submission to Grade -->
       <div class="doc" id="current-submission">
+        <!-- TODO: figure out why !== null isn't working -->
+        <div id="proposed-grade" ng-show="proposedGrade != null">
+          {{proposedGrade}}
+        </div>
         <div class="question" ng-hide="roundComplete()">
           {{getCurrentSubmissionNumber() + 1}}. {{getCurrentQuestion()}}
         </div>
@@ -65,7 +72,7 @@
             {{getCurrentSubmissionNumber() + 1}}/{{getNumberOfSubmissions()}}
           </div>
           <div id="grades">
-            <button class="grade" ng-repeat="grade in [1,2,3,4,5]" ng-click="enterGrade(grade)" ng-hide="roundComplete()">{{grade}}</button>
+            <button class="grade" ng-repeat="grade in [1,2,3,4,5]" ng-mouseover="setProposedGrade(grade)" ng-mouseout="setProposedGrade(null)" ng-click="enterGrade(grade)" ng-hide="roundComplete()">{{grade}}</button>
             <button id="next-round-button" ng-click="nextRound()" ng-show="roundComplete()">Next Round</button>
           </div>
           <!-- <button ng-click="dump()">Dump Data</button> -->
