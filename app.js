@@ -45,9 +45,8 @@ QuickGrade.factory('settings', function () {
     self.showJustGradedStack = true;
     
     self.boolToVisibilityVerb = function (bool) {
-      console.log("blarp");
       return bool ? "Show" : "Hide";
-    }
+    };
     
     self.menuItems = [
       {
@@ -99,7 +98,26 @@ QuickGrade.controller('assignmentController', function ($scope, data, settings) 
   $scope.setProposedGrade = null;
   $scope.setProposedGrade = function (grade) {
     $scope.proposedGrade = grade;
-  }
+  };
+  
+  $scope.getAssignmentProgressSummary = function () {
+    var assignment = data.getAssignment(currentAssignment);
+    var summary = {};
+    // determine the question with the highest number of grading rounds done so far
+    // new Array(...) bit is a hack to make it work with ng-repeat
+    summary.maxRounds = new Array(_.max(_.map(assignment.submissions[0].answers, function (answer) {
+      return answer.grades ? answer.grades.length : 0;
+    })));
+    
+    summary.questions = _.map(assignment.submissions[0].answers, function (answer) {
+      return answer.grades;
+    })
+    
+    return summary;
+  };
+  
+  // // test
+  // $scope.getAssignmentProgressSummary();
 
   $scope.enterGrade = function (grade) {
     var curr = currentAnswersToGrade[currentAnswer];
@@ -156,6 +174,13 @@ QuickGrade.controller('assignmentController', function ($scope, data, settings) 
   $scope.nextRound = function () {
     currentAnswer = 0;
   };
+  
+  $scope.newRound = function (questionNumber) {
+    console.log(questionNumber);
+    currentAnswer = 0;
+    currentQuestionNumber = questionNumber;
+    currentAnswersToGrade = _.shuffle(data.getAnswersForQuestion(currentAssignment, currentQuestionNumber));
+  }
 
   $scope.roundComplete = function () {
     return currentAnswer >= $scope.getNumberOfSubmissions();
