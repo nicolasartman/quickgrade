@@ -118,7 +118,11 @@ QuickGrade.controller('assignmentController', function ($scope, data, settings) 
   };
 
   $scope.getCurrentSubmission = function () {
-    return currentAnswersToGrade[currentAnswer].answer || "";
+    if (currentAnswersToGrade[currentAnswer] && currentAnswersToGrade[currentAnswer].answer) {
+      return currentAnswersToGrade[currentAnswer].answer;
+    } else {
+      return ""
+    }
   };
 
   $scope.getCurrentSubmissionNumber = function () {
