@@ -84,7 +84,7 @@ QuickGrade.controller('menuBarController', function ($scope, data, settings) {
 // TODO: migrate state to service
 QuickGrade.controller('assignmentController', function ($scope, data, settings) {
   var currentAssignment = 0;
-  var currentAnswer = 0;
+  var currentAnswer = -1;
   var currentQuestionNumber = 0;
 
   var currentAnswersToGrade = _.shuffle(data.getAnswersForQuestion(currentAssignment, currentQuestionNumber));
@@ -182,7 +182,7 @@ QuickGrade.controller('assignmentController', function ($scope, data, settings) 
     currentAnswersToGrade = _.shuffle(data.getAnswersForQuestion(currentAssignment, currentQuestionNumber));
   }
 
-  $scope.roundComplete = function () {
-    return currentAnswer >= $scope.getNumberOfSubmissions();
+  $scope.roundInProgress = function () {
+    return currentAnswer >= 0 && currentAnswer < $scope.getNumberOfSubmissions();
   };
 });

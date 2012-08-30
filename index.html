@@ -44,7 +44,7 @@
     <div id="grading-view" ng-controller="assignmentController">
       <!-- Just-Graded Submission -->
       <!-- TODO: refactor name -->
-      <div class="doc" id="previous-submission" ng-show="getPreviousSubmission() && settings.showJustGradedStack">
+      <div class="doc" id="previous-submission" ng-show="getPreviousSubmission() && settings.showJustGradedStack && roundInProgress()">
         <div class="question">
           {{getCurrentSubmissionNumber() + 1}}. {{getCurrentQuestion()}}
         </div>
@@ -61,14 +61,14 @@
         <div id="proposed-grade" ng-show="proposedGrade != null">
           {{proposedGrade}}
         </div>
-        <div class="question" ng-hide="roundComplete()">
+        <div class="question" ng-show="roundInProgress()">
           {{getCurrentSubmissionNumber() + 1}}. {{getCurrentQuestion()}}
         </div>
-        <div id="current-submission-response" ng-hide="roundComplete()">
+        <div id="current-submission-response" ng-show="roundInProgress()">
           {{getCurrentSubmission()}}
         </div>
         <!-- Round Summary -->
-        <div id="round-summary" ng-show="roundComplete()">
+        <div id="round-summary" ng-hide="roundInProgress()">
           <div id="progress-summary">
             <h2>Progress on Assignment {{getCurrentAssignmentName()}}</h2>
             <table border="1" cellspacing="0" cellpadding="5">
@@ -77,20 +77,23 @@
                 <th ng-repeat="hack in getAssignmentProgressSummary().maxRounds">Round {{$index + 1}}</th>
                 <!-- <th>New Round</th> -->
               </tr>
-              <tr ng-repeat="question in getAssignmentProgressSummary().questions">
-                <td>{{$index + 1}}</td>
-                <td ng-repeat="round in question">X</td>
+              <tr ng-repeat="(questionNumber, question) in getAssignmentProgressSummary().questions">
+                <td>{{questionNumber + 1}}</td>
+                <td ng-repeat="(roundNumber, round) in question">
+                  <span class="check-mark">&#10004;</span>
+                  <span class="view-button"><a href="#">View</a></span>
+                </td>
                 <td class="button-container"><button class="push-button" ng-click="newRound($index)"><strong>+</strong></button></td>
               </tr>
             </table>
           </div>
         </div>
         <div id="controls">
-          <div id="progress" ng-hide="roundComplete()">
+          <div id="progress" ng-show="roundInProgress()">
             {{getCurrentSubmissionNumber() + 1}}/{{getNumberOfSubmissions()}}
           </div>
           <div id="grades">
-            <button class="grade" ng-repeat="grade in [1,2,3,4,5]" ng-mouseover="setProposedGrade(grade)" ng-mouseout="setProposedGrade(null)" ng-click="enterGrade(grade)" ng-hide="roundComplete()">{{grade}}</button>
+            <button class="grade" ng-repeat="grade in [1,2,3,4,5]" ng-mouseover="setProposedGrade(grade)" ng-mouseout="setProposedGrade(null)" ng-click="enterGrade(grade)" ng-show="roundInProgress()">{{grade}}</button>
             <!-- <button id="next-round-button" ng-click="nextRound()" ng-show="roundComplete()">Continue</button> -->
           </div>
           <button ng-click="dump()">Dump Data</button>

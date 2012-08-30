@@ -313,19 +313,20 @@ h2 {
 #progress-summary table th {
   background: #60ADD3;
   border: none;
-/*  border-right: 1px solid #444;
-  border-top: 1px solid #444;
-  border-bottom: 1px solid #444;  
-*/}
-#progress-summary table th:first-child {
-/*  border-left: 1px solid #444;*/
 }
 #progress-summary table td {
   background: rgba(0,0,0,0.1);
   border: none;
-/*  border-right: 1px solid #999;
-  border-bottom: 1px solid #999;
-*/}
+}
+#progress-summary table td .view-button {
+  display:none;
+}
+#progress-summary table td:hover .check-mark {
+  display:none;
+}
+#progress-summary table td:hover .view-button {
+  display:inline;
+}
 #progress-summary table td:first-child {
   background: rgba(96, 173, 211, 0.5);
 }
