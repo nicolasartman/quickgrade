@@ -1,13 +1,17 @@
 /*global
  window: true,
+ FileReader: true,
  jquery:true,
  _: true,
  $:true,
- angular: true
+ angular: true,
+ CSVToArray: true,
+ dummyData: true,
+ localLib: true,
 */
 
 /**
- * quickGrade Module
+ * QuickGrade Module
  */
 var QuickGrade = angular.module('quickGrade', []);
 
@@ -17,6 +21,13 @@ function Data () {
 
   this.dump = function () {
     console.log(assignments);
+  };
+  
+  this.importAssignment = function (assignment) {
+    // TODO: prompt the user to ignore certain questions, choose student names, etc
+    assignments.push(assignment);
+    console.log(assignment);
+    alert("Import Successful!");
   };
   
   this.getQuestion = function (assignmentNumber, questionNumber) {
@@ -62,6 +73,33 @@ QuickGrade.factory('data', function () {
   return new Data();
 });
 
+QuickGrade.factory('io', function () {
+  return {
+    "gDocsSpreadsheetToAssignment": function (fileName, fileContents) {
+      // TODO: allow choosing of which column is student names
+      var rows = localLib.CSVToArray(fileContents);
+      
+      return {
+        "assignmentName": fileName,
+        "questions": _.map(rows[0], function (val) {
+          return {
+            "question": val
+          };
+        }),
+        "submissions": _.map(_.rest(rows), function (row) {
+          return {
+            "answers": _.map(row, function (studentResponse) {
+              return {
+                "answer": studentResponse
+              }
+            })
+          };
+        })
+      }
+    }
+  };
+});
+
 
 QuickGrade.controller('menuBarController', function ($scope, data, settings) {
   $scope.settings = settings;
@@ -95,6 +133,11 @@ QuickGrade.controller('assignmentController', function ($scope, data, settings) 
     data.dump();
   };
   
+  $scope.openAssignment = function (assignmentNumber) {
+    currentAssignment = assignmentNumber;
+    currentAnswer = -1;
+  }
+  
   $scope.setProposedGrade = null;
   $scope.setProposedGrade = function (grade) {
     $scope.proposedGrade = grade;
@@ -111,7 +154,7 @@ QuickGrade.controller('assignmentController', function ($scope, data, settings) 
     
     summary.questions = _.map(assignment.submissions[0].answers, function (answer) {
       return answer.grades;
-    })
+    });
     
     return summary;
   };
@@ -139,7 +182,7 @@ QuickGrade.controller('assignmentController', function ($scope, data, settings) 
     if (currentAnswersToGrade[currentAnswer] && currentAnswersToGrade[currentAnswer].answer) {
       return currentAnswersToGrade[currentAnswer].answer;
     } else {
-      return ""
+      return "";
     }
   };
 
@@ -180,9 +223,40 @@ QuickGrade.controller('assignmentController', function ($scope, data, settings) 
     currentAnswer = 0;
     currentQuestionNumber = questionNumber;
     currentAnswersToGrade = _.shuffle(data.getAnswersForQuestion(currentAssignment, currentQuestionNumber));
-  }
+  };
 
   $scope.roundInProgress = function () {
     return currentAnswer >= 0 && currentAnswer < $scope.getNumberOfSubmissions();
   };
+});
+
+
+QuickGrade.directive('fileImporter', function (io, data) {
+  return function (scope, element, attrs) {
+      function handleFileSelect(event) {
+        // Stop bubbling
+        event.stopPropagation();
+        event.preventDefault();
+        
+        var file = event.target.files[0];
+        
+        var reader = new FileReader();
+        
+        reader.onloadend = function (loadEvent) {
+          var newDoc = io.gDocsSpreadsheetToAssignment(file.name, loadEvent.target.result);
+          console.log(newDoc);
+          data.importAssignment(newDoc);
+        };
+        reader.onerror = function (errorEvent) {
+          console.log("FILE READ ERROR");
+          console.log(errorEvent);
+        };
+        reader.readAsText(file);
+        
+        console.log(file);
+      }
+
+      console.log(element);
+      element[0].addEventListener('change', handleFileSelect, false);
+    }
 });
