@@ -91,15 +91,35 @@ QuickGrade.factory('io', function () {
             "answers": _.map(row, function (studentResponse) {
               return {
                 "answer": studentResponse
-              }
+              };
             })
           };
         })
       }
-    }
+    },
+    "prompt": function (fields, okButtonCallback) {
+      this.showPrompt = true;
+    },
+    "showPrompt": false
   };
 });
 
+QuickGrade.directive('modalPrompt', function (io) {
+  return function postLink(scope, element, attributes) {
+    // Toggle visibility
+    scope.$watch(function () {
+      return io.showPrompt;
+    }, function (value) {
+      console.log("called")
+      console.log(value)
+      if (value) {
+        element.removeClass("hidden"); 
+      } else {        
+        element.addClass("hidden"); 
+      }
+    });
+  };
+});
 
 QuickGrade.controller('menuBarController', function ($scope, data, settings) {
   $scope.settings = settings;
@@ -120,7 +140,7 @@ QuickGrade.controller('menuBarController', function ($scope, data, settings) {
 
 
 // TODO: migrate state to service
-QuickGrade.controller('assignmentController', function ($scope, data, settings) {
+QuickGrade.controller('assignmentController', function ($scope, data, settings, io) {
   var currentAssignment = 0;
   var currentAnswer = -1;
   var currentQuestionNumber = 0;
@@ -131,6 +151,7 @@ QuickGrade.controller('assignmentController', function ($scope, data, settings) 
 
   $scope.dump = function () {
     data.dump();
+    io.prompt();
   };
   
   $scope.openAssignment = function (assignmentNumber) {
@@ -159,9 +180,6 @@ QuickGrade.controller('assignmentController', function ($scope, data, settings) 
     return summary;
   };
   
-  // // test
-  // $scope.getAssignmentProgressSummary();
-
   $scope.enterGrade = function (grade) {
     var curr = currentAnswersToGrade[currentAnswer];
 
@@ -230,7 +248,6 @@ QuickGrade.controller('assignmentController', function ($scope, data, settings) 
   };
 });
 
-
 QuickGrade.directive('fileImporter', function (io, data) {
   return function (scope, element, attrs) {
       function handleFileSelect(event) {
@@ -246,6 +263,7 @@ QuickGrade.directive('fileImporter', function (io, data) {
           var newDoc = io.gDocsSpreadsheetToAssignment(file.name, loadEvent.target.result);
           console.log(newDoc);
           data.importAssignment(newDoc);
+          io.showPrompt = true;
         };
         reader.onerror = function (errorEvent) {
           console.log("FILE READ ERROR");

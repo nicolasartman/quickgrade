@@ -6,6 +6,7 @@
     <script src="dummyData.js" type="text/javascript" charset="utf-8"></script>
     <script src="lib/angular-1.0.1.js" type="text/javascript" charset="utf-8"></script>
     <script src="lib/underscore.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/lib.js" type="text/javascript" charset="utf-8"></script>
     <script src="app.js" type="text/javascript" charset="utf-8"></script>
     <title>Quick! Grade!</title>
   </head>
@@ -18,6 +19,7 @@
         <ul>
           <li class="menu-item">File
             <ul class="sub-menu">
+              <li class="sub-menu-item"><input file-importer type="file" value="Import Assignment"></li>
               <li class="sub-menu-item"><a download="data.json" href="{{dataBlobURL}}">Download</a></li>
             </ul>
           </li>
@@ -70,7 +72,7 @@
         <!-- Round Summary -->
         <div id="round-summary" ng-hide="roundInProgress()">
           <div id="progress-summary">
-            <h2>Progress on Assignment {{getCurrentAssignmentName()}}</h2>
+            <h2>1{{getCurrentAssignmentName()}} Summary</h2>
             <table border="1" cellspacing="0" cellpadding="5">
               <tr>
                 <th>Question</th>
@@ -101,6 +103,9 @@
       </div>
       <div class="doc" ng-show="settings.showPaperStack && getCurrentSubmissionNumber() < getNumberOfSubmissions() - 1" id="stacked-paper-1"></div>
       <div class="doc" ng-show="settings.showPaperStack && getCurrentSubmissionNumber() < getNumberOfSubmissions() - 2" id="stacked-paper-2"></div>
+    </div>
+    <div modal-prompt class="hidden" id="modalPrompt">
+      Test
     </div>
   </body>
 </html>

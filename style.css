@@ -9,6 +9,24 @@ h2 {
   text-align: center;
 }
 
+.hidden {
+  display: none;
+}
+
+/* TODO: move somewhere more logical */
+#modalPrompt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -200px;
+  margin-left: -200px;
+  width: 400px;
+  height: 400px;
+  background: #CCC;
+  z-index: 999;
+}
+
+
 #menu, .grade, #previous-submission-grade, #next-round-button, #proposed-grade {
   font-family: 'Permanent Marker', cursive;
 }
